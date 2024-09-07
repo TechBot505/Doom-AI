@@ -1,4 +1,3 @@
-from langchain_community.utilities import SQLDatabase
 import os
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
