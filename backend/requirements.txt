@@ -16,3 +16,6 @@ sentence-transformers
 chromadb
 PyPDF2
 python-multipart
+google-generativeai
+groq
+langchain-groq

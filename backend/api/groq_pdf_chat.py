@@ -5,12 +5,14 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.vectorstores import FAISS
-from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
-from google.generativeai import genai
+from langchain_groq import ChatGroq
+import google.generativeai as genai
 
 load_dotenv()
+
+groq_api_key = os.environ['GROQ_API_KEY']
 os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
@@ -41,10 +43,13 @@ def get_conversational_chain():
     
     Answer:
     """
-    model = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.3)
+    llm = ChatGroq(
+            groq_api_key = groq_api_key, 
+            model_name = "llama3-8b-8192"
+    )
     
     prompt = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
-    chain = load_qa_chain(model, chain_type="stuff", prompt=prompt)
+    chain = load_qa_chain(llm, chain_type="stuff", prompt=prompt)
     return chain
 
 def user_input(user_question):

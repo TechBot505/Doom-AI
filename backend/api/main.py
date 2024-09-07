@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from langchain_core.messages import AIMessage, HumanMessage
 from mysql_chat import get_response, init_database
-from pdf_chat import get_pdf_text, get_text_chunks, get_vector_store, user_input
+from groq_pdf_chat import get_pdf_text, get_text_chunks, get_vector_store, user_input
 from schemas import dbModel, ChatRequest
 
 app = FastAPI()
@@ -19,11 +19,6 @@ chat_history: list = [AIMessage(content="Hello! I am a SQL Assistant. How can I 
 database_data: dbModel = None
 data = None
 save_to = None
-    
-@app.get("/")
-def init_db():
-    print(database_data)
-    return {"Hello": "World"}
 
 @app.post("/api/connect-to-db")
 async def connect_to_db(db: dbModel):
@@ -47,11 +42,6 @@ async def get_response_api(request: ChatRequest):
         return {"response": response}
     except Exception as e:
         return {"status": "Error getting response", "error": str(e)}
-    
-# @app.post("/api/get-chat-history")
-# async def get_chat_history():
-#     global chat_history
-#     return {"chat_history": chat_history}
 
 @app.post("/api/upload-file")
 async def upload_file(file: UploadFile):

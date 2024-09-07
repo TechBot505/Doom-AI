@@ -38,7 +38,7 @@ def get_sql_chain(db):
     
     prompt = ChatPromptTemplate.from_template(template)
     
-    llm = GoogleGenerativeAI(model="gemini-pro", google_api_key=os.getenv("GEMINI_API_KEY"))
+    llm = GoogleGenerativeAI(model="gemini-pro", google_api_key=os.getenv("GOOGLE_API_KEY"))
     
     def get_schema(_):
         return db.get_table_info()
@@ -65,7 +65,7 @@ def get_response(user_query: str, db: SQLDatabase, chat_history: list):
   
     prompt = ChatPromptTemplate.from_template(template)
     
-    llm = GoogleGenerativeAI(model="gemini-pro", google_api_key=os.getenv("GEMINI_API_KEY"))
+    llm = GoogleGenerativeAI(model="gemini-pro", google_api_key=os.getenv("GOOGLE_API_KEY"))
     
     chain = (
         RunnablePassthrough.assign(query=sql_chain).assign(
