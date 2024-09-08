@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import { Bot } from "lucide-react";
-import ChatContainer from "@/components/custom/ChatContainer";
+import PDFChatContainer from "@/components/custom/PDFChatContainer";
 import UploadForm from "@/components/custom/UploadForm";
 
 function PDFChat() {
   const [connection, setConnection] = useState<string>("");
-  let url = "http://localhost:8000/api/get-ai-response";
+  const url = "http://localhost:8000/api/get-ai-response";
   
   return (
     <div className="flex flex-col items-center dark:bg-darkPrimary bg-white gap-2">
@@ -34,7 +34,7 @@ function PDFChat() {
           <h1 className="text-2xl font-bold ">Start Chatting</h1>
           <Bot size={28} />
         </div>
-        <ChatContainer connection={connection} url={url} placeholder="Ask a question to your PDF" />
+        <PDFChatContainer connection={connection} url={url} placeholder="Ask a question to your PDF" />
       </div>
     </div>
   );

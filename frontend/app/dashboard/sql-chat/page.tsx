@@ -6,7 +6,7 @@ import { Bot } from "lucide-react";
 
 function SQLChat() {
   const [connection, setConnection] = useState<string>("");
-  let url = "http://localhost:8000/api/get-response";
+  const url = "http://localhost:8000/api/get-response";
 
   return (
     <div className="flex flex-col items-center dark:bg-darkPrimary bg-white gap-2">
