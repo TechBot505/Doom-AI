@@ -1,7 +1,6 @@
 "use client";
 
-import { Database, FileText, Home, X } from "lucide-react";
-import Image from "next/image";
+import { Database, FileText, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Link from "next/link";
@@ -21,11 +20,6 @@ function SideNav({ showSidebar, setShowSidebar }: PROPS) {
   const path = usePathname();
 
   const MenuList: MENU[] = [
-    // {
-    //   title: "Home",
-    //   icon: Home,
-    //   path: "/dashboard",
-    // },
     {
       title: "PDF Chat",
       icon: FileText,
@@ -42,11 +36,10 @@ function SideNav({ showSidebar, setShowSidebar }: PROPS) {
     <div
       className={`${
         showSidebar ? "ml-0" : "ml-[-340px]"
-      } lg:ml-0 w-72 lg:w-64 transition-[margin-left] ease-in-out duration-500 h-screen fixed dark:bg-darkSecondary p-5 shadow-sm border bg-white z-10`}
+      } lg:ml-0 w-72 lg:w-64 transition-[margin-left] ease-in-out duration-500 h-screen fixed dark:bg-darkSecondary p-5 shadow-sm border bg-white z-auto`}
     >
       <div className="flex flex-row justify-between items-center">
         <div className="justify-center flex items-center gap-1">
-          {/* <Image width={42} height={42} alt="logo" src={"/logo.png"} /> */}
           <span className="font-bold text-xl text-gray-700 dark:text-white">
             🤖 Doom AI
           </span>
@@ -66,7 +59,7 @@ function SideNav({ showSidebar, setShowSidebar }: PROPS) {
             onClick={() => setShowSidebar(false)}
           >
             <div
-              className={`flex items-center mb-3 p-3 gap-2 cursor-pointer hover:bg-gray-700 hover:text-white rounded-lg ${
+              className={`flex items-center mb-3 p-3 gap-2 cursor-pointer text-gray-700 dark:text-white hover:bg-gray-700 hover:text-white rounded-lg ${
                 path === menu.path && "bg-gray-700 text-white"
               }`}
             >

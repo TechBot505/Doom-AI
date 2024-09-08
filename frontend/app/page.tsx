@@ -18,20 +18,10 @@ export default function Home() {
             href="/"
             className="flex gap-1 items-center justify-center font-bold text-lg"
           >
-            {/* <img src="/logo.png" alt="logo" className="w-12" /> */}
-            <span>🤖 Doom AI</span>
+            <span className="text-gray-700 dark:text-white text-xl">🤖 Doom AI</span>
           </Link>
           <div className="flex gap-8 items-center ml-auto">
             <ThemeToggle />
-            {/* <Link href="/dashboard">
-              <Button
-                variant="outline"
-                className="flex items-center gap-2 transition-all text-md font-semibold rounded-md px-2 py-5"
-              >
-                SignIn
-                <ArrowRight size={24} />
-              </Button>
-            </Link> */}
           </div>
         </div>
       </header>

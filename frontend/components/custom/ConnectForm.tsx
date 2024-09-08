@@ -65,7 +65,7 @@ const ConnectForm = ({ setConnection }: ConnectFormProps) => {
           name="user"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>User</FormLabel>
+              <FormLabel className="text-gray-700 dark:text-white">User</FormLabel>
               <FormControl>
                 <Input placeholder="Enter User" {...field} />
               </FormControl>
@@ -78,7 +78,7 @@ const ConnectForm = ({ setConnection }: ConnectFormProps) => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel className="text-gray-700 dark:text-white">Password</FormLabel>
               <FormControl>
                 <Input placeholder="Enter Password" {...field} />
               </FormControl>
@@ -91,7 +91,7 @@ const ConnectForm = ({ setConnection }: ConnectFormProps) => {
           name="host"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Host</FormLabel>
+              <FormLabel className="text-gray-700 dark:text-white">Host</FormLabel>
               <FormControl>
                 <Input placeholder="Enter Host" {...field} />
               </FormControl>
@@ -104,7 +104,7 @@ const ConnectForm = ({ setConnection }: ConnectFormProps) => {
           name="port"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Port</FormLabel>
+              <FormLabel className="text-gray-700 dark:text-white">Port</FormLabel>
               <FormControl>
                 <Input placeholder="Enter Port" {...field} />
               </FormControl>
@@ -117,7 +117,7 @@ const ConnectForm = ({ setConnection }: ConnectFormProps) => {
           name="database"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Database</FormLabel>
+              <FormLabel className="text-gray-700 dark:text-white">Database</FormLabel>
               <FormControl>
                 <Input placeholder="Enter Database" {...field} />
               </FormControl>
