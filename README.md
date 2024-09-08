@@ -1,6 +1,10 @@
 # DOOM AI: Intelligent Chat
 Welcome to **Doom AI**, an intelligent chat platform that allows users to interact with both **PDF files** and **MySQL databases** using natural language. The system leverages advanced AI models to interpret user queries and provide meaningful responses based on the provided documents or database. This project is built to be highly responsive, supporting all devices, and includes light/dark mode functionality for enhanced user experience.
 
+Video Walkthrough - [SQL Chat](https://drive.google.com/file/d/1VAHXVEPUaKTNVhdZpc-TNSXzWCv8ZD_E/view?usp=sharing)
+
+Video Walkthrough - [PDF Chat](https://drive.google.com/file/d/11m6gei2WzAyN2x9PTtQzg48MEtQJ_gAQ/view?usp=sharing)
+
 ![Screenshot (581)](https://github.com/user-attachments/assets/dc5760cb-f248-4d0e-9432-8d5812de5997)
 
 ## Features
