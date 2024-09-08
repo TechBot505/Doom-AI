@@ -11,7 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Bot, Loader2 } from "lucide-react";
+import { Bot, Loader2, User } from "lucide-react";
 import axios from "axios";
 import { useState } from "react";
 
@@ -45,15 +45,15 @@ function ChatContainer({ connection }: ChatContainerProps) {
     setLoading(true);
     try {
       console.log(values.user_query);
-      setMessages([...messages, { role: "user", content: values.user_query }]);
       const response = await axios.post(
         "http://localhost:8000/api/get-response",
         values
       );
-      console.log(response);
+      console.log(response.data.response);
       setMessages([
         ...messages,
-        { role: "bot", content: response.data.message },
+        { role: "user", content: values.user_query },
+        { role: "bot", content: response.data.response },
       ]);
     } catch (error) {
       console.error(error);
@@ -64,13 +64,14 @@ function ChatContainer({ connection }: ChatContainerProps) {
 
   return (
     <div className="flex flex-col justify-between bg-darkSecondary rounded-md p-2 sm:p-4">
-      <div className="h-[300px] overflow-y-auto space-y-3">
+      <div className="h-[300px] overflow-y-auto space-y-3 w-full">
         <ul>
           {messages.map((msg, idx) => (
             <li
               key={idx}
-              className={`${msg.role === "user" ? "text-right" : "text-left"}`}
+              className={`${msg.role === "user" ? "text-right" : "text-left"} flex items-center`}
             >
+                <Bot size={24} className={`inline-block ${msg.role === "user" ? "hidden" : ""}`} />
               <span
                 className={`${
                   msg.role === "user"
@@ -80,6 +81,7 @@ function ChatContainer({ connection }: ChatContainerProps) {
               >
                 {msg.content}
               </span>
+              <User size={24} className={`inline-block ${msg.role === "bot" ? "hidden" : ""}`} />
             </li>
           ))}
         </ul>
