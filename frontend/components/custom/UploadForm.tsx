@@ -16,12 +16,8 @@ import { Bot, Loader2 } from "lucide-react";
 import axios from "axios";
 import { useState } from "react";
 
-const dbSchema = z.object({
-  user: z.string().min(1).max(50),
-  password: z.string().min(1).max(50),
-  database: z.string().min(1).max(50),
-  host: z.string().min(1).max(50),
-  port: z.string().min(1).max(65535),
+const pdfSchema = z.object({
+  file: z.instanceof(File),
 });
 
 interface UploadFormProps {
@@ -30,22 +26,18 @@ interface UploadFormProps {
 
 const UploadForm = ({ setConnection }: UploadFormProps) => {
   const [loading, setLoading] = useState(false);
-  const form = useForm<z.infer<typeof dbSchema>>({
-    resolver: zodResolver(dbSchema),
-    defaultValues: {
-      user: "",
-      password: "",
-      database: "",
-      host: "",
-      port: "",
-    },
+  const form = useForm<z.infer<typeof pdfSchema>>({
+    resolver: zodResolver(pdfSchema)
   });
 
-  async function onSubmit(values: z.infer<typeof dbSchema>) {
+  async function onSubmit(values: z.infer<typeof pdfSchema>) {
     setLoading(true);
+    const formData = new FormData();
+    formData.append("file", values.file); 
+    console.log(formData);
+    console.log(values.file);
     try {
-        console.log(values);
-        const response = await axios.post("http://localhost:8000/api/connect-to-db", values);
+        const response = await axios.post("http://localhost:8000/api/upload-file", formData);
         console.log(response.data.message);
         setConnection(response.data.message);
     }
@@ -59,67 +51,23 @@ const UploadForm = ({ setConnection }: UploadFormProps) => {
     <div>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 w-full gap-8">
+        <div className="">
         <FormField
           control={form.control}
-          name="user"
-          render={({ field }) => (
+          name="file"
+          render={({ field: { value, onChange, ...fieldProps } }) => (
             <FormItem>
-              <FormLabel>User</FormLabel>
+              <FormLabel>File</FormLabel>
               <FormControl>
-                <Input placeholder="Enter User" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter Password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="host"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Host</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter Host" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="port"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Port</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter Port" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="database"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Database</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter Database" {...field} />
+                <Input
+                  {...fieldProps}
+                  type="file"
+                  accept=".pdf"
+                  onChange={(event) => {
+                    const file = event.target.files?.[0];
+                    onChange(file);
+                  }}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -130,7 +78,7 @@ const UploadForm = ({ setConnection }: UploadFormProps) => {
               type="submit"
               className="text-lg px-3 py-4 gap-2 bg-gradient-to-br dark:text-white from-amber-300 to to-orange-600 hover:scale-105 transition-all duration-300"
             >
-              Connect
+              Upload
               {!loading && <Bot size={24} className="hover:animate-spin" />}
               {loading && <Loader2 size={24} className="animate-spin" />}
             </Button>

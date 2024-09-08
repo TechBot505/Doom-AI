@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import UploadForm from "@/components/custom/UploadForm";
+import ConnectForm from "@/components/custom/ConnectForm";
 import ChatContainer from "@/components/custom/ChatContainer";
 import { Bot } from "lucide-react";
 
 function SQLChat() {
   const [connection, setConnection] = useState<string>("");
+  let url = "http://localhost:8000/api/get-response";
 
   return (
     <div className="flex flex-col items-center dark:bg-darkPrimary bg-white gap-2">
@@ -21,7 +22,7 @@ function SQLChat() {
         </div>
       </div>
       <div className="w-full sm:px-16 px-8 py-4 mb-2">
-        <UploadForm setConnection={setConnection} />
+        <ConnectForm setConnection={setConnection} />
       </div>
       {connection && (
         <div className="bg-green-300 px-4 py-1 mx-4 rounded-md mb-4">
@@ -33,7 +34,7 @@ function SQLChat() {
           <h1 className="text-2xl font-bold ">Start Chatting</h1>
           <Bot size={28}/>
         </div>
-        <ChatContainer connection={connection} />
+        <ChatContainer connection={connection} url={url} placeholder="Ask a question to your Database" />
       </div>
     </div>
   );

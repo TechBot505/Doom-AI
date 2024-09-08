@@ -53,7 +53,7 @@ async def upload_file(file: UploadFile):
             text = get_pdf_text(save_to)
             text_chunks = get_text_chunks(text)
             get_vector_store(text_chunks)
-        return {"status": "File uploaded successfully", "filename": file.filename}
+        return {"message": "File uploaded successfully! Start querying the document.."}
     except Exception as e:
         return {"status": "Error uploading file", "error": str(e)}
 

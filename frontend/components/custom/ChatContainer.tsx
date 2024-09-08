@@ -26,9 +26,11 @@ const chatSchema = z.object({
 
 interface ChatContainerProps {
   connection: string;
+  url: string;
+  placeholder?: string;
 }
 
-function ChatContainer({ connection }: ChatContainerProps) {
+function ChatContainer({ connection, url, placeholder }: ChatContainerProps) {
   const [messages, setMessages] = useState<Message[]>([
     { role: "bot", content: "Hello! How can I help you today?" },
   ]);
@@ -46,7 +48,7 @@ function ChatContainer({ connection }: ChatContainerProps) {
     try {
       console.log(values.user_query);
       const response = await axios.post(
-        "http://localhost:8000/api/get-response",
+        url,
         values
       );
       console.log(response.data.response);
@@ -100,7 +102,7 @@ function ChatContainer({ connection }: ChatContainerProps) {
                   <FormItem>
                     <FormControl>
                       <Input
-                        placeholder="Ask a question to your database"
+                        placeholder={placeholder || "Type your message here..."}
                         {...field}
                       />
                     </FormControl>
