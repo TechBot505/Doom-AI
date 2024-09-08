@@ -21,11 +21,11 @@ function SideNav({ showSidebar, setShowSidebar }: PROPS) {
   const path = usePathname();
 
   const MenuList: MENU[] = [
-    {
-      title: "Home",
-      icon: Home,
-      path: "/dashboard",
-    },
+    // {
+    //   title: "Home",
+    //   icon: Home,
+    //   path: "/dashboard",
+    // },
     {
       title: "PDF Chat",
       icon: FileText,

@@ -62,4 +62,4 @@ def user_input(user_question):
     
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=True)
     
-    return response
+    return response['output_text']

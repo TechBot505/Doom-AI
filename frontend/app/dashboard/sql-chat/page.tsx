@@ -6,7 +6,7 @@ import { Bot } from "lucide-react";
 
 function SQLChat() {
   const [connection, setConnection] = useState<string>("");
-  const url = "http://localhost:8000/api/get-response";
+  const url = "http://localhost:8000/api/get-sql-response";
 
   return (
     <div className="flex flex-col items-center dark:bg-darkPrimary bg-white gap-2">
@@ -25,7 +25,7 @@ function SQLChat() {
         <ConnectForm setConnection={setConnection} />
       </div>
       {connection && (
-        <div className="bg-green-300 px-4 py-1 mx-4 rounded-md mb-4">
+        <div className="bg-green-300 px-4 py-1 mx-4 rounded-md mb-4 border-2 border-green-700">
           <p className="text-gray-900 text-sm">{connection}</p>
         </div>
       )}

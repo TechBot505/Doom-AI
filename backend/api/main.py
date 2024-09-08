@@ -30,7 +30,7 @@ async def connect_to_db(db: dbModel):
     except Exception as e:
         return {"status": "Error connecting to database", "error": str(e)}
     
-@app.post("/api/get-response")
+@app.post("/api/get-sql-response")
 async def get_response_api(request: ChatRequest):
     global chat_history
     try:
@@ -57,7 +57,7 @@ async def upload_file(file: UploadFile):
     except Exception as e:
         return {"status": "Error uploading file", "error": str(e)}
 
-@app.post("/api/get-ai-response")
+@app.post("/api/get-pdf-response")
 def get_ai_response(request: ChatRequest):
     if save_to is None:
         raise HTTPException(status_code=400, detail="No file uploaded")

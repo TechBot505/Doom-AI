@@ -47,10 +47,7 @@ function ChatContainer({ connection, url, placeholder }: ChatContainerProps) {
     setLoading(true);
     try {
       console.log(values.user_query);
-      const response = await axios.post(
-        url,
-        values
-      );
+      const response = await axios.post(url, values);
       console.log(response.data.response);
       setMessages([
         ...messages,
@@ -71,19 +68,29 @@ function ChatContainer({ connection, url, placeholder }: ChatContainerProps) {
           {messages.map((msg, idx) => (
             <li
               key={idx}
-              className={`${msg.role === "user" ? "text-right" : "text-left"} flex items-center`}
+              className={`${
+                msg.role === "user" ? "text-right" : "text-left"
+              } flex items-center`}
             >
-                <Bot size={24} className={`inline-block ${msg.role === "user" ? "hidden" : ""}`} />
+              <Bot
+                size={24}
+                className={`${
+                  msg.role === "user" ? "hidden" : ""
+                }`}
+              />
               <span
                 className={`${
                   msg.role === "user"
-                    ? "bg-gradient-to-br from-amber-300 to to-orange-600 text-transparent bg-clip-text"
+                    ? "bg-gradient-to-br from-amber-300 to to-orange-600 text-transparent bg-clip-text text-right w-full"
                     : "bg-gradient-to-br from-gray-300 to-gray-500 text-transparent bg-clip-text"
-                } px-4 py-2 rounded-lg inline-block`}
+                } px-4 py-2 rounded-lg`}
               >
                 {msg.content}
               </span>
-              <User size={24} className={`inline-block ${msg.role === "bot" ? "hidden" : ""}`} />
+              <User
+                size={24}
+                className={`${msg.role === "bot" ? "hidden" : ""}`}
+              />
             </li>
           ))}
         </ul>

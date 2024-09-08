@@ -67,7 +67,7 @@ export default function Home() {
                 intelligent, real-time conversations with Doom AI—transforming
                 data into knowledge effortlessly.
               </p>
-              <Link href="/dashboard">
+              <Link href="/dashboard/pdf-chat">
                 <Button
                   type="button"
                   className="text-lg px-4 py-6 gap-2 bg-gradient-to-br dark:text-white from-amber-300 to to-orange-600 hover:scale-105 transition-all duration-300"
