@@ -26,18 +26,17 @@ async def connect_to_db(db: dbModel):
     try:
         database_data = db
         data = init_database(db)
-        return {"status": "Connected to database!"}
+        return {"message": "Connection Established! You can now start querying the database.."}
     except Exception as e:
         return {"status": "Error connecting to database", "error": str(e)}
     
 @app.post("/api/get-response")
 async def get_response_api(request: ChatRequest):
     global chat_history
-    if database_data is None:
-        raise HTTPException(status_code=400, detail="Database not connected")
     try:
         chat_history.append(HumanMessage(content=request.user_query))
         response = get_response(request.user_query, data, chat_history)
+        print(response)
         chat_history.append(AIMessage(content=response))
         return {"response": response}
     except Exception as e:
