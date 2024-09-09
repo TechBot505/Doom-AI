@@ -25,7 +25,7 @@ const dbSchema = z.object({
 });
 
 interface ConnectFormProps {
-    setConnection: (data: string) => void;
+  setConnection: (data: string) => void;
 }
 
 const ConnectForm = ({ setConnection }: ConnectFormProps) => {
@@ -44,98 +44,110 @@ const ConnectForm = ({ setConnection }: ConnectFormProps) => {
   async function onSubmit(values: z.infer<typeof dbSchema>) {
     setLoading(true);
     try {
-        console.log(values);
-        const response = await axios.post("http://localhost:8000/api/connect-to-db", values);
-        console.log(response.data.message);
-        setConnection(response.data.message);
-    }
-    catch (error) {
-        console.error(error);
+      console.log(values);
+      const response = await axios.post(
+        "http://localhost:8000/api/connect-to-db",
+        values
+      );
+      console.log(response.data.message);
+      setConnection(response.data.message);
+    } catch (error) {
+      console.error(error);
     }
     setLoading(false);
   }
 
   return (
     <div>
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 w-full gap-8">
-        <FormField
-          control={form.control}
-          name="user"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-gray-700 dark:text-white">User</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter User" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-gray-700 dark:text-white">Password</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter Password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="host"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-gray-700 dark:text-white">Host</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter Host" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="port"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-gray-700 dark:text-white">Port</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter Port" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="database"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-gray-700 dark:text-white">Database</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter Database" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        </div>
-        <Button
-              type="submit"
-              className="text-lg px-3 py-4 gap-2 bg-gradient-to-br dark:text-white from-amber-300 to to-orange-600 hover:scale-105 transition-all duration-300"
-            >
-              Connect
-              {!loading && <Bot size={24} className="hover:animate-spin" />}
-              {loading && <Loader2 size={24} className="animate-spin" />}
-            </Button>
-      </form>
-    </Form>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 w-full gap-8">
+            <FormField
+              control={form.control}
+              name="user"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-gray-700 dark:text-white">
+                    User
+                  </FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter User" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-gray-700 dark:text-white">
+                    Password
+                  </FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter Password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="host"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-gray-700 dark:text-white">
+                    Host
+                  </FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter Host" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="port"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-gray-700 dark:text-white">
+                    Port
+                  </FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter Port" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="database"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-gray-700 dark:text-white">
+                    Database
+                  </FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter Database" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <Button
+            type="submit"
+            className="text-lg px-3 py-4 gap-2 bg-gradient-to-br dark:text-white from-amber-300 to to-orange-600 hover:scale-105 transition-all duration-300"
+          >
+            Connect
+            {!loading && <Bot size={24} className="hover:animate-spin" />}
+            {loading && <Loader2 size={24} className="animate-spin" />}
+          </Button>
+        </form>
+      </Form>
     </div>
   );
 };

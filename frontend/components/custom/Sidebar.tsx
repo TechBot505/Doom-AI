@@ -1,6 +1,6 @@
 "use client";
 
-import { Database, FileText, X } from "lucide-react";
+import { Database, FileText, Home, Settings, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Link from "next/link";
@@ -21,6 +21,11 @@ function SideNav({ showSidebar, setShowSidebar }: PROPS) {
 
   const MenuList: MENU[] = [
     {
+      title: "Home",
+      icon: Home,
+      path: "/dashboard",
+    },
+    {
       title: "PDF Chat",
       icon: FileText,
       path: "/dashboard/pdf-chat",
@@ -30,13 +35,18 @@ function SideNav({ showSidebar, setShowSidebar }: PROPS) {
       icon: Database,
       path: "/dashboard/sql-chat",
     },
+    {
+      title: "Settings",
+      icon: Settings,
+      path: "/dashboard/settings",
+    },
   ];
 
   return (
     <div
       className={`${
         showSidebar ? "ml-0" : "ml-[-340px]"
-      } lg:ml-0 w-72 lg:w-64 transition-[margin-left] ease-in-out duration-500 h-screen fixed dark:bg-darkSecondary p-5 shadow-sm border bg-white z-auto`}
+      } lg:ml-0 w-72 lg:w-64 transition-[margin-left] ease-in-out duration-500 h-screen fixed dark:bg-darkSecondary p-5 shadow-sm border bg-white z-10`}
     >
       <div className="flex flex-row justify-between items-center">
         <div className="justify-center flex items-center gap-1">
