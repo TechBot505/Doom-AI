@@ -9,9 +9,9 @@ function PDFChat() {
   const url = "http://localhost:8000/api/get-pdf-response";
   
   return (
-    <div className="flex flex-col items-center dark:bg-darkPrimary bg-white gap-2">
+    <div className="flex flex-col items-center dark:bg-darkPrimary bg-white gap-2 z-0">
       <div className="relative pt-12">
-        <div className="relative flex flex-col items-center max-w-screen-xl mx-auto px-8 z-10 text-center">
+        <div className="relative flex flex-col items-center max-w-screen-xl mx-auto px-8 text-center">
           <h1 className="bg-gradient-to-br from-amber-300 to to-orange-600 text-transparent bg-clip-text text-3xl md:text-4xl font-bold leading-tight mb-6">
             Chat with PDF Files
           </h1>

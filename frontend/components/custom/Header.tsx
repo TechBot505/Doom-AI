@@ -1,6 +1,7 @@
 import ThemeToggle from "@/components/custom/ThemeToggle";
 import { Menu, Search } from "lucide-react";
 import React from "react";
+import { UserButton } from "@clerk/nextjs";
 
 interface PROPS {
   setShowSidebar: (value: boolean) => void;
@@ -28,6 +29,7 @@ function Header({ setShowSidebar }: PROPS) {
       </div>
       <div className="flex gap-5 items-center">
         <ThemeToggle />
+        <UserButton />
       </div>
     </div>
   );

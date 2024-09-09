@@ -22,6 +22,15 @@ export default function Home() {
           </Link>
           <div className="flex gap-8 items-center ml-auto">
             <ThemeToggle />
+            <Link href="/dashboard">
+              <Button
+                variant="outline"
+                className="flex items-center gap-2 transition-all text-md font-semibold rounded-md px-2 py-5"
+              >
+                SignIn
+                <ArrowRight size={24} />
+              </Button>
+            </Link>
           </div>
         </div>
       </header>
@@ -57,7 +66,7 @@ export default function Home() {
                 intelligent, real-time conversations with Doom AI—transforming
                 data into knowledge effortlessly.
               </p>
-              <Link href="/dashboard/pdf-chat">
+              <Link href="/dashboard">
                 <Button
                   type="button"
                   className="text-lg px-4 py-6 gap-2 bg-gradient-to-br dark:text-white from-amber-300 to to-orange-600 hover:scale-105 transition-all duration-300"
