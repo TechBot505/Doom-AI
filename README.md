@@ -41,7 +41,7 @@ Video Walkthrough - [PDF Chat](https://drive.google.com/file/d/11m6gei2WzAyN2x9P
 * Python
 * FastAPI
 * Langchain
-* FAISS Index (Vector Database)
+* Pinecone (Vector Database)
 * Gemini API
 * Groq Llama Model
 
@@ -60,7 +60,7 @@ Video Walkthrough - [PDF Chat](https://drive.google.com/file/d/11m6gei2WzAyN2x9P
 ### Chat with PDF Files
 1. **PDF Upload:** The user uploads a PDF file, which is sent to a FastAPI endpoint.
 2. **Text Extraction:** The PDF is processed, and the text is extracted.
-3. **Chunking:** The extracted text is broken into manageable chunks and stored in a vector database (FAISS).
+3. **Chunking:** The extracted text is broken into manageable chunks and stored in a cloud vector database (Pinecone).
 4. **User Query:** The user enters a query on the frontend, which is sent to the backend.
 5. **Context Retrieval:** The query is used to perform a cosine similarity search on the vector database to extract relevant chunks of the document.
 6. **AI Response:** The user query and document context are passed to the Groq Llama model, which generates a response.
@@ -78,7 +78,12 @@ You will need to configure the following environment variables in your `.env` fi
 # Backend
 GEMINI_API_KEY=your_gemini_api_key
 GROQ_API_KEY=your_groq_llama_api_key
+PINECONE_API_KEY=your_pinecone_api_key
 ```
+### Vector DB Setup
+1. There are two options to use vector databases
+   a. FAAIS: Local Vector Storage (No additional setup required, just uncomment the commented code in groq_pdf_chat and comment the Pinecone Db code)
+   b. Pinecone: Create an account on Pinecone and create an index 'doom-ai-index'.
 
 ### Backend Setup
 1. Clone the repository:
