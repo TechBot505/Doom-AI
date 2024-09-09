@@ -16,8 +16,12 @@ Video Walkthrough - [PDF Chat](https://drive.google.com/file/d/11m6gei2WzAyN2x9P
 
 ![Screenshot (579)](https://github.com/user-attachments/assets/4f643056-25a0-4c22-8e3d-377e363121c2)
 
+* **Secure Authentication:** Implemented Authentication using Clerk, user can use Google, Github or Email for Sign Up.
+
 * **Responsive Design:** Optimized for all devices (mobile, tablet, desktop).
+
 * **Light/Dark Mode:** User interface available in both light and dark themes.
+
 * **AI-Driven Responses:** Uses Groq Llama and Gemini models for AI-based query processing.
 
 ![Screenshot (577)](https://github.com/user-attachments/assets/d877e216-3272-4995-9b54-d52ff6c61d86)
