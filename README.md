@@ -24,9 +24,11 @@ Video Walkthrough - [PDF Chat](https://drive.google.com/file/d/11m6gei2WzAyN2x9P
 
 * **AI-Driven Responses:** Uses Groq Llama and Gemini models for AI-based query processing.
 
-![Screenshot (577)](https://github.com/user-attachments/assets/d877e216-3272-4995-9b54-d52ff6c61d86)
+![Screenshot (576)](https://github.com/user-attachments/assets/c46a009f-fbbf-4c4d-890d-a6d25810799b)
 
 * **Contextual Chat:** Maintains chat history to provide continuous, context-aware conversation.
+
+![Screenshot (577)](https://github.com/user-attachments/assets/d877e216-3272-4995-9b54-d52ff6c61d86)
 
 ## Tech Stacks
 ### Frontend
@@ -63,12 +65,6 @@ Video Walkthrough - [PDF Chat](https://drive.google.com/file/d/11m6gei2WzAyN2x9P
 5. **Context Retrieval:** The query is used to perform a cosine similarity search on the vector database to extract relevant chunks of the document.
 6. **AI Response:** The user query and document context are passed to the Groq Llama model, which generates a response.
 7. **Response Delivery:** The AI-generated response is sent back to the frontend and displayed to the user.
-
-## Future Scope
-* **Data Persistence:** Implement the functionality to upload all necessary data (such as chat history and extracted PDF data) into a database for long-term storage.
-* **Cloud Vector Database:** Add support for a cloud-based vector database to store the document embeddings and facilitate more scalable and efficient querying.
-* **Website Deployment:** Deploy the website on a cloud platform like AWS, Google Cloud, or Vercel to make it publicly accessible.
-* **Multiple Document Chat:** Enhance the platform to allow users to upload and query multiple documents at once, improving the versatility of the tool.
 
 ## Local Setup
 ### Prerequisites
@@ -133,6 +129,12 @@ GROQ_API_KEY=your_groq_llama_api_key
    ```bash
    http://localhost:3000/
    ```
+
+## Future Scope
+* **Data Persistence:** Implement the functionality to upload all necessary data (such as chat history and extracted PDF data) into a database for long-term storage.
+* **Cloud Vector Database:** Add support for a cloud-based vector database to store the document embeddings and facilitate more scalable and efficient querying.
+* **Website Deployment:** Deploy the website on a cloud platform like AWS, Google Cloud, or Vercel to make it publicly accessible.
+* **Multiple Document Chat:** Enhance the platform to allow users to upload and query multiple documents at once, improving the versatility of the tool.
 
 ## Contributing
 We welcome contributions! To contribute:
