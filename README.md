@@ -81,9 +81,9 @@ GROQ_API_KEY=your_groq_llama_api_key
 PINECONE_API_KEY=your_pinecone_api_key
 ```
 ### Vector DB Setup
-1. There are two options to use vector databases
-   a. FAAIS: Local Vector Storage (No additional setup required, just uncomment the commented code in groq_pdf_chat and comment the Pinecone Db code)
-   b. Pinecone: Create an account on Pinecone and create an index 'doom-ai-index'.
+* There are two options to use vector databases
+  1. FAAIS: Local Vector Storage (No additional setup required, just uncomment the commented code in groq_pdf_chat and comment the Pinecone Db code)
+  2. Pinecone: Create an account on Pinecone and create an index 'doom-ai-index'.
 
 ### Backend Setup
 1. Clone the repository:
