@@ -82,7 +82,7 @@ function ChatContainer({ connection, url, placeholder }: ChatContainerProps) {
                 className={`${
                   msg.role === "user"
                     ? "bg-gradient-to-br from-amber-300 to to-orange-600 text-transparent bg-clip-text text-right w-full"
-                    : "bg-gradient-to-br from-gray-300 to-gray-500 text-transparent bg-clip-text"
+                    : "bg-gradient-to-br from-gray-300 to-gray-500 text-transparent bg-clip-text max-w-3xl"
                 } px-4 py-2 rounded-lg`}
               >
                 {msg.content}

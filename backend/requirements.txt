@@ -19,3 +19,4 @@ python-multipart
 google-generativeai
 groq
 langchain-groq
+langchain-pinecone
