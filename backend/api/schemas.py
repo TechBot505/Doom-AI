@@ -10,10 +10,5 @@ class dbModel(BaseModel):
 class ChatRequest(BaseModel):
     user_query: str
     
-# {
-#   "user": "root",
-#   "password": "rohit",
-#   "host": "localhost",
-#   "port": "3306",
-#   "database": "retail_sales_db"
-# }
+class UrlModel(BaseModel):
+    url: str

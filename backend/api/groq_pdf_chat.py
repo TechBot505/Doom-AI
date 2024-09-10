@@ -2,7 +2,6 @@ import os
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-import os
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 # from langchain.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
@@ -43,8 +42,7 @@ def get_vector_store(text_chunks):
     vector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)
     vector_store.add_texts(text_chunks, namespace=identity)
     
-def get_conversational_chain():
-    
+def get_conversational_chain():   
     prompt_template = """
     Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
     the provided context, please answer with "Sorry, I don't know the answer to that question.", don't provide any other wrong answer.\n\n
