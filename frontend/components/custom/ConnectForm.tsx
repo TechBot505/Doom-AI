@@ -139,6 +139,7 @@ const ConnectForm = ({ setConnection }: ConnectFormProps) => {
             />
           </div>
           <Button
+          disabled={loading}
             type="submit"
             className="text-lg px-3 py-4 gap-2 bg-gradient-to-br dark:text-white from-amber-300 to to-orange-600 hover:scale-105 transition-all duration-300"
           >

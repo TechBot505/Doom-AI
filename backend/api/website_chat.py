@@ -65,7 +65,7 @@ def get_conversational_rag_chain(retriever_chain):
         [
             (
                 "system",
-                "Answer the user's questions based on the below context:\n\n{context}",
+                "Answer the user's questions based solely on the below context:\n\n{context} .If the answer is not inthe provided context, please answer with 'Sorry, I don't know the answer to that question.', don't provide any other wrong answer or any answer self made by you from any other resources.",
             ),
             MessagesPlaceholder(variable_name="chat_history"),
             ("user", "{input}"),

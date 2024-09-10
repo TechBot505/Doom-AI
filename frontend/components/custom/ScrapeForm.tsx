@@ -16,30 +16,30 @@ import { Bot, Loader2 } from "lucide-react";
 import axios from "axios";
 import { useState } from "react";
 
-const pdfSchema = z.object({
-  file: z.instanceof(File),
+const urlSchema = z.object({
+  url: z.string().min(1).max(200),
 });
 
-interface UploadFormProps {
+interface ConnectFormProps {
   setConnection: (data: string) => void;
 }
 
-const UploadForm = ({ setConnection }: UploadFormProps) => {
+const ScrapeForm = ({ setConnection }: ConnectFormProps) => {
   const [loading, setLoading] = useState(false);
-  const form = useForm<z.infer<typeof pdfSchema>>({
-    resolver: zodResolver(pdfSchema),
+  const form = useForm<z.infer<typeof urlSchema>>({
+    resolver: zodResolver(urlSchema),
+    defaultValues: {
+      url: ""
+    },
   });
 
-  async function onSubmit(values: z.infer<typeof pdfSchema>) {
+  async function onSubmit(values: z.infer<typeof urlSchema>) {
     setLoading(true);
-    const formData = new FormData();
-    formData.append("file", values.file);
-    console.log(formData);
-    console.log(values.file);
     try {
+      console.log(values);
       const response = await axios.post(
-        "http://localhost:8000/api/upload-file",
-        formData
+        "http://localhost:8000/api/scrape-website",
+        values
       );
       console.log(response.data.message);
       setConnection(response.data.message);
@@ -53,24 +53,17 @@ const UploadForm = ({ setConnection }: UploadFormProps) => {
     <div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <div className="">
+          <div>
             <FormField
               control={form.control}
-              name="file"
-              render={({ field: { value, onChange, ...fieldProps } }) => (
+              name="url"
+              render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-700 dark:text-white">File</FormLabel>
+                  <FormLabel className="text-gray-700 dark:text-white">
+                    Website Url
+                  </FormLabel>
                   <FormControl>
-                    <Input
-                      {...fieldProps}
-                      type="file"
-                      className="dark:bg-gray-700 dark:text-white"
-                      accept=".pdf"
-                      onChange={(event) => {
-                        const file = event.target.files?.[0];
-                        onChange(file);
-                      }}
-                    />
+                    <Input placeholder="Enter Website Url" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -82,7 +75,7 @@ const UploadForm = ({ setConnection }: UploadFormProps) => {
             type="submit"
             className="text-lg px-3 py-4 gap-2 bg-gradient-to-br dark:text-white from-amber-300 to to-orange-600 hover:scale-105 transition-all duration-300"
           >
-            Upload
+            Scrape
             {!loading && <Bot size={24} className="hover:animate-spin" />}
             {loading && <Loader2 size={24} className="animate-spin" />}
           </Button>
@@ -92,4 +85,4 @@ const UploadForm = ({ setConnection }: UploadFormProps) => {
   );
 };
 
-export default UploadForm;
+export default ScrapeForm;
