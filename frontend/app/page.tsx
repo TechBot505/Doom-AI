@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   Database,
-  FileText
+  FileText,
+  PanelsTopLeft
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -78,7 +79,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 md:grid-cols-2 max-w-5xl mx-auto gap-6 px-4 my-12">
+          <div className="grid lg:grid-cols-3 md:grid-cols-3 max-w-6xl mx-auto gap-8 px-4 my-12">
             <div className="hover:bg-gray-100 dark:hover:bg-gray-700 p-6 rounded-md hover:scale-105 transition-all duration-300 cursor-pointer">
               <FileText
                 size={48}
@@ -109,6 +110,25 @@ export default function Home() {
               <p className="text-md dark:text-gray-300 text-gray-600">
                 Seamlessly chat with your SQL databases—query, analyze, and
                 visualize data in real-time.
+              </p>
+              <a
+                href="/"
+                className="text-orange-500 font-bold inline-block text-sm mt-4"
+              >
+                Learn more
+              </a>
+            </div>
+            <div className="hover:bg-gray-100 dark:hover:bg-gray-700 p-6 rounded-md hover:scale-105 transition-all duration-300 cursor-pointer">
+              <PanelsTopLeft
+                size={48}
+                className="mb-3 inline-block bg-gray-700 text-white p-2 rounded-md"
+              />
+              <h3 className="text-xl font-bold mb-2 dark:text-white text-gray-800">
+                Website/Blog
+              </h3>
+              <p className="text-md dark:text-gray-300 text-gray-600">
+              Engage with Your Website Like Never Before – AI-Powered,
+              Conversational Insights at Your Fingertips!
               </p>
               <a
                 href="/"
