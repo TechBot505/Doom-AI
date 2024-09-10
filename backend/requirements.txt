@@ -20,3 +20,8 @@ google-generativeai
 groq
 langchain-groq
 langchain-pinecone
+beautifulsoup4
+httptools
+pip-chill
+websockets
+watchfiles

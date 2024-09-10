@@ -1,6 +1,6 @@
 "use client";
 
-import { Database, FileText, Home, Settings, X } from "lucide-react";
+import { Database, FileText, Home, PanelsTopLeftIcon, Settings, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Link from "next/link";
@@ -34,6 +34,11 @@ function SideNav({ showSidebar, setShowSidebar }: PROPS) {
       title: "MySQL Chat",
       icon: Database,
       path: "/dashboard/sql-chat",
+    },
+    {
+      title: "Website Chat",
+      icon: PanelsTopLeftIcon,
+      path: "/dashboard/website-chat"
     },
     {
       title: "Settings",
